@@ -88,11 +88,8 @@ h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.025em;line-height:
 }
 @keyframes portrait-rise{to{opacity:1;transform:translateY(0)}}
 .hero-portrait-float{position:relative;width:100%;aspect-ratio:1/1;animation:float-a 9s ease-in-out infinite;animation-delay:1.4s}
-.hero-portrait-img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 20%;
-  display:block;clip-path:url(#portraitClip);filter:grayscale(1) drop-shadow(0 16px 30px rgba(42,35,64,.4));
-}
-.hero-portrait-ring{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:var(--accent);stroke-linecap:round;stroke-linejoin:round;opacity:.8;pointer-events:none}
+.hero-portrait-svg{display:block;width:100%;height:auto;overflow:visible}
+.hero-portrait-photo{filter:grayscale(1) drop-shadow(0 10px 18px rgba(42,35,64,.4))}
 @media (max-width:40rem){.hero-portrait{position:static;width:9rem;margin:0 0 2rem}}
 .hero-inner{position:relative;z-index:3;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .hero-eyebrow{color:var(--accent);margin:0 0 1.6rem}
@@ -302,19 +299,19 @@ body.is-locked{overflow:hidden}
   </div>
   <div class="hero-veil" aria-hidden="true"></div>
 
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <clipPath id="portraitClip" clipPathUnits="objectBoundingBox">
-        <path d="M0.5 0.12c0.14 -0.02 0.27 0.05 0.31 0.18 0.035 0.12 -0.02 0.23 -0.11 0.3 -0.1 0.08 -0.24 0.1 -0.35 0.04 -0.11 -0.06 -0.17 -0.18 -0.16 -0.3 0.01 -0.13 0.11 -0.2 0.31 -0.22Z"/>
-      </clipPath>
-    </defs>
-  </svg>
   <div class="hero-portrait">
     <div class="hero-portrait-float">
-      <img class="hero-portrait-img" src="images/portrait.jpg" alt="Stewart Utley" width="900" height="601">
-      <svg class="hero-portrait-ring" viewBox="0 0 200 200" stroke-width="2.5" aria-hidden="true">
-        <path d="M100 24c28 -4 54 10 62 36 7 24 -4 46 -22 60 -20 16 -48 20 -70 8 -22 -12 -34 -36 -32 -60 2 -26 22 -40 62 -44Z"/>
-        <path d="M100 30c26 -3 49 9 56 32 6 21 -3 41 -20 54 -18 14 -43 18 -63 7 -20 -11 -30 -32 -29 -54 2 -23 20 -36 56 -39Z" opacity=".5"/>
+      <svg class="hero-portrait-svg" viewBox="0 0 200 200" role="img" aria-label="Stewart Utley">
+        <defs>
+          <clipPath id="portraitClip">
+            <path d="M100 24c28 -4 54 10 62 36 7 24 -4 46 -22 60 -20 16 -48 20 -70 8 -22 -12 -34 -36 -32 -60 2 -26 22 -40 62 -44Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#portraitClip)" class="hero-portrait-photo">
+          <image href="images/portrait.jpg" x="-46" y="0" width="300" height="200" preserveAspectRatio="none"/>
+        </g>
+        <path d="M100 24c28 -4 54 10 62 36 7 24 -4 46 -22 60 -20 16 -48 20 -70 8 -22 -12 -34 -36 -32 -60 2 -26 22 -40 62 -44Z" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+        <path d="M100 30c26 -3 49 9 56 32 6 21 -3 41 -20 54 -18 14 -43 18 -63 7 -20 -11 -30 -32 -29 -54 2 -23 20 -36 56 -39Z" fill="none" stroke="var(--accent)" stroke-width="2.5" opacity=".5"/>
       </svg>
     </div>
   </div>
